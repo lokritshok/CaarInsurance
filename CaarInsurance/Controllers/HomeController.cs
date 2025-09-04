@@ -1,6 +1,6 @@
-using System.Diagnostics;
 using CaarInsurance.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace CaarInsurance.Controllers
 {

@@ -1,0 +1,39 @@
+﻿@using CaarInsurance.Models
+
+@model IEnumerable<Insuree>
+@{
+    ViewData["Title"] = "Admin";
+    var firstInsuree = Model?.FirstOrDefault();
+}
+<div class="row no-gutters m-3">
+   <div class="card col col col mx-auto shadow">
+       <div class="card-header text-center">
+           <h5 class="m-0">Insurees Admin</h5>
+       </div>
+         <div class="card-body">
+            <p class="card-text">Manage insurees, view quotes, and perform administrative tasks.</p>
+
+            @if (Model != null)
+            {
+                foreach (var insuree in Model!) 
+                {
+                    //  each insuree details
+                    <div class="mb-3 p-3 border rounded">
+                        <h6>@insuree.FirstName @insuree.LastName</h6>
+                        <p>Email: @insuree.EmailAddress</p>
+                        <p>Car: @insuree.CarYear @insuree.CarMake @insuree.CarModel</p>
+                        <p>Quote: $@insuree.Quote</p>
+                        <!-- details or actions as needed -->
+                        <a asp-action="Edit" asp-route-id="@insuree.Id" class="btn btn-primary btn-sm">Edit</a>
+                        <a asp-action="Details" asp-route-id="@insuree.Id" class="btn btn-info btn-sm">Details</a>
+                        <a asp-action="Delete" asp-route-id="@insuree.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+    }
+            }
+            else
+            {
+                <p>No insurees found.</p>
+            }
+        </div>
+   </div>
+</div>
